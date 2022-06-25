@@ -1,36 +1,25 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 public class Card2 {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(bf.readLine());
 
-        int[] array = new int[n];
-        for (int i=0; i<n; i++) array[i] = i+1;
-
-
-        int count = n;
-        int tmp;
-        while(count >1){
-            tmp = array[1];
-            for (int i=0; i<count-1; i++){
-                array[i] = array[i+1];
-            }
-            count--;
-            for (int i=0; i<count-1; i++){
-                array[i] = array[i+1];
-            }
-            array[count-1] = tmp;
-
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i=0; i<n; i++){
+            queue.add(i+1);
         }
-        System.out.println(array[0]);
 
 
-
-
-
-
+        while(n>1){
+            queue.remove();
+            queue.add(queue.poll());
+            n--;
+        }
+        System.out.println(queue.poll());
 
     }
 }

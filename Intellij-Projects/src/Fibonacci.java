@@ -13,7 +13,6 @@ public class Fibonacci {
 
         }
 
-
     }
     public static void Count(int n, int[] array){
         if (n==1){

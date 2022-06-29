@@ -5,9 +5,11 @@ public class BinarySearch {
         for (int i=0; i<9; i++){
             array[i] = i;
         }
-        // 내가만든 이진탐색
+
+        // my method
         System.out.println(BinarySearch(array,4));
-        // 라이브러리 이진탐색
+
+        // library method
         System.out.println(Arrays.binarySearch(array,4));
 
 

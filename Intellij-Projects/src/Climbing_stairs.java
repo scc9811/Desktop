@@ -30,7 +30,6 @@ public class Climbing_stairs {
             System.out.println(Arrays.toString(dp));
         }
         System.out.println(dp[dp.length-1]);
-
     }
 
 }

@@ -35,11 +35,6 @@ public class CardSort_greedy {
             }
             size--;
 
-//            for (int i=1; i<size-1; i++){
-//                array[i] = array[i+1];
-//            }
-//            size--;
-//            Arrays.sort(array,0,size);
         }
         System.out.println(sum);
 

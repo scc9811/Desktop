@@ -17,11 +17,9 @@ public class Scale_greedy {
         }
         Arrays.sort(array);
         int[] result = new int[sum];
+
         for (int i=0; i<N; i++){
-            result[array[i]] = 0;
-        }
-        for (int i=2; i<N; i++){
-
+            result[array[i]] = 1;
         }
 
 
@@ -32,6 +30,50 @@ public class Scale_greedy {
 
 
 
+
+
+
+//        for (int i=1; i<sum; i++){
+//            if(result[i]==0) {
+//                boolean tf = false;
+//                int tmp =0;
+//                int count =0;
+//                // 뺄 값을 찾기위해서 array 한바퀴.
+//                for (int j=0; j<N; j++){
+//                    System.out.println("array[j] = "+array[j]);
+//                    // array[j]를 뺐을때 그 값이 1인 경우.
+//                    if(i-array[j] > 0 && result[i-array[j]]==1){
+//                        tmp = array[j];
+//                        for (int k=j; k<N; k++)
+//                            if(array[j]==array[k]) count++;
+//                        while(count-->0 && i-tmp >0){
+//                            if(result[i-tmp] == 0) {
+//                                System.out.println("i-tmp = "+(i-tmp));
+//                                tf = true;
+//                                break;
+//                            }
+//                            tmp += array[j];
+//
+//                        }
+//                    }
+//                    if (tf) break;
+//                }
+//
+//                if (tf){
+//                    result[i]=1;
+//                }
+//                else{
+//                    System.out.println(i);
+//                }
+//                if (!tf) System.out.println(i);
+//                else{
+//                    result[i] = 1;
+//                    System.out.println(i);
+//                }
+//            }
+//        }
+//
+//        System.out.println(Arrays.toString(result));
 
 
 

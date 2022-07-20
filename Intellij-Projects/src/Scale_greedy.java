@@ -16,19 +16,19 @@ public class Scale_greedy {
             sum += array[i];
         }
         Arrays.sort(array);
-        int[] result = new int[sum];
+        int[] result = new int[sum+1];
 
-        for (int i=0; i<N; i++){
-            result[array[i]] = 1;
+        int[] start = new int[N];
+        function(array, start, result, 0, 0);
+
+
+
+        for (int i=1; i<sum+1; i++){
+            if (result[i]==0){
+                System.out.println(i);
+                break;
+            }
         }
-
-
-
-
-
-
-
-
 
 
 
@@ -100,4 +100,24 @@ public class Scale_greedy {
 
 
     }
+    public static void function(int[] array1, int[] array2, int[] result, int n, int count){
+        if (count==array1.length){}
+        else {
+            function(array1, array2, result, n, count + 1);
+            array2[count] = 1;
+            n += array1[count];
+            result[n] = 1;
+            function(array1, array2, result, n, count + 1);
+        }
+
+
+
+
+
+
+
+
+    }
+
+
 }

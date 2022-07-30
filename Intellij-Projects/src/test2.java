@@ -1,15 +1,35 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.io.*;
+import java.util.StringTokenizer;
+
 
 public class test2 {
-    public static void main(String[] args)throws IOException{
+    public static void main(String[] args)throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        Queue<Integer> q = new PriorityQueue<Integer>();
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int h = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        StringBuilder sb = new StringBuilder();
+
+        if(m>=45){
+            sb.append(h).append(" ").append(m-45);
+            bw.write(sb.toString());
+        }
+        else if (h==0) {
+            sb.append(23).append(" ").append(m+60-45);
+            bw.write(sb.toString());
+        }
+        else {
+            sb.append(h-1).append(" ").append(m+60-45);
+            bw.write(sb.toString());
+        }
+        bw.close();
+
+
+
+
+
+
 
 
 

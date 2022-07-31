@@ -7,23 +7,27 @@ public class test2 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int h = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-        StringBuilder sb = new StringBuilder();
 
-        if(m>=45){
-            sb.append(h).append(" ").append(m-45);
-            bw.write(sb.toString());
+        int first = Integer.parseInt(st.nextToken());
+        int second = Integer.parseInt(st.nextToken());
+        int third = Integer.parseInt(st.nextToken());
+
+        int result;
+        if(first==second && second==third){
+            result = 10000+first*1000;
         }
-        else if (h==0) {
-            sb.append(23).append(" ").append(m+60-45);
-            bw.write(sb.toString());
+        else if (first!=second && second!=third && first!=third){
+            result = Math.max(Math.max(first,second),third)*100;
         }
-        else {
-            sb.append(h-1).append(" ").append(m+60-45);
-            bw.write(sb.toString());
-        }
+        else if (first==second) result = 1000+first*100;
+        else result = 1000+third*100;
+
+        bw.write(String.valueOf(result));
         bw.close();
+
+
+
+
 
 
 

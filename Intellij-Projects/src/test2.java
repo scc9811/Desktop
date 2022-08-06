@@ -3,30 +3,29 @@ import java.util.*;
 
 
 public class test2 {
-    static int[] dp_zero = new int[41];
-    static int[] dp_one = new int[41];
+    static int[] array = new int[20000001];
     public static void main(String[] args)throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        dp_zero[0] = 1;
-        dp_zero[1] = 0;
-        dp_one[0] = 0;
-        dp_one[1] = 1;
-        for (int i=2; i<41; i++){
-            dp_zero[i] = dp_zero[i-1]+dp_zero[i-2];
-            dp_one[i] = dp_one[i-1]+dp_one[i-2];
+        int size = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        while (size-->0){
+            array[Integer.parseInt(st.nextToken())+10000000]++;
         }
-        StringBuilder sb = new StringBuilder();
-        int testCase = Integer.parseInt(br.readLine());
-        while (testCase-->0){
-            int n = Integer.parseInt(br.readLine());
-            sb.append(dp_zero[n]).append(" ").append(dp_one[n]).append("\n");
 
+        int testCase = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        while(testCase-->0){
+
+            sb.append(array[Integer.parseInt(st.nextToken())+10000000]).append(' ');
         }
         sb.delete(sb.length()-1,sb.length());
         bw.write(sb.toString());
         bw.close();
+
+
+
 
 
 

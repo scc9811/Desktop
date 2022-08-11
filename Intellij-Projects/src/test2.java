@@ -3,32 +3,42 @@ import java.util.*;
 
 
 public class test2 {
+    static boolean[] visited;
+    static int[] array;
+    static int m,n;
+    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args)throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int size = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
 
-        int[] sumArray = new int[size+1];
-        int testCase = Integer.parseInt(st.nextToken());
-        st = new StringTokenizer(br.readLine());
-        sumArray[1] = Integer.parseInt(st.nextToken());
 
-        int sum=sumArray[1];
-        for (int i=2; i<size+1; i++){
-            sum +=Integer.parseInt(st.nextToken());
-            sumArray[i] = sum;
+        visited = new boolean[n + 1];
+        array = new int[m + 1];
+
+        function(0);
+        System.out.println(sb);
+
+
+    }
+
+    public static void function(int depth){
+        if (depth==m){
+            for (int i=0; i<m; i++){
+                sb.append(array[i]).append(" ");
+            }
+            sb.append('\n');
+            return;
+        }
+        for(int i=1; i<=n; i++){
+            if(visited[i]) continue;
+            visited[i]=true;
+            array[depth]=i;
+            function(depth+1);
+            visited[i]=false;
         }
 
-        StringBuilder sb = new StringBuilder();
-        while (testCase-->0){
-            st = new StringTokenizer(br.readLine());
-            int start = Integer.parseInt(st.nextToken());
-            int end = Integer.parseInt(st.nextToken());
-            sb.append(sumArray[end]-sumArray[start-1]).append('\n');
-        }
-        bw.write(sb.toString());
-        bw.close();
 
 
     }

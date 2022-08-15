@@ -3,41 +3,56 @@ import java.util.*;
 
 
 public class test2 {
-    static boolean[] visited;
-    static int[] array;
-    static int m,n;
-    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args)throws IOException {
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
-
-
-        visited = new boolean[n + 1];
-        array = new int[m + 1];
-
-        function(0);
-        System.out.println(sb);
-
-
-    }
-
-    public static void function(int depth){
-        if (depth==m){
-            for (int i=0; i<m; i++){
-                sb.append(array[i]).append(" ");
+        int[] array = new int[2000001];
+        int startIndex=0;
+        int lastIndex=0;
+        int testCase = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+        while(testCase-->0){
+            st = new StringTokenizer(br.readLine());
+            String s = st.nextToken();
+            if(s.equals("push")){
+                array[lastIndex++]=Integer.parseInt(st.nextToken());
             }
-            sb.append('\n');
-            return;
+            else if(s.equals("pop")){
+                if(lastIndex-startIndex==0) bw.write("-1");
+                else{
+                    bw.write(String.valueOf(array[startIndex++]));
+                }
+                bw.write('\n');
+            }
+            else if(s.equals("size")) {
+                bw.write(String.valueOf(lastIndex-startIndex));
+                bw.write('\n');
+            }
+            else if(s.equals("empty")) {
+                if(lastIndex-startIndex==0) bw.write("1");
+                else bw.write("0");
+                bw.write('\n');
+            }
+            else if(s.equals("front")){
+                if(lastIndex-startIndex==0) bw.write("-1");
+                else bw.write(String.valueOf(array[startIndex]));
+                bw.write('\n');
+            }
+            else if(s.equals("back")){
+                if(lastIndex-startIndex==0) bw.write("-1");
+                else bw.write(String.valueOf(array[lastIndex-1]));
+                bw.write('\n');
+            }
+
+
+
+
+
+
         }
-        for(int i=1; i<=n; i++){
-            if(visited[i]) continue;
-            visited[i]=true;
-            array[depth]=i;
-            function(depth+1);
-            visited[i]=false;
-        }
+        bw.close();
+
 
 
 

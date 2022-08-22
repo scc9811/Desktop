@@ -1,61 +1,59 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.StringTokenizer;
 
-
-public class test2 {
+public class test2{
+    static int[] array;
+    static int[] printArray;
+    static int n,m;
+    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args)throws IOException {
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int[] array = new int[2000001];
-        int startIndex=0;
-        int lastIndex=0;
-        int testCase = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
-        StringTokenizer st;
-        while(testCase-->0){
-            st = new StringTokenizer(br.readLine());
-            String s = st.nextToken();
-            if(s.equals("push")){
-                array[lastIndex++]=Integer.parseInt(st.nextToken());
-            }
-            else if(s.equals("pop")){
-                if(lastIndex-startIndex==0) bw.write("-1");
-                else{
-                    bw.write(String.valueOf(array[startIndex++]));
-                }
-                bw.write('\n');
-            }
-            else if(s.equals("size")) {
-                bw.write(String.valueOf(lastIndex-startIndex));
-                bw.write('\n');
-            }
-            else if(s.equals("empty")) {
-                if(lastIndex-startIndex==0) bw.write("1");
-                else bw.write("0");
-                bw.write('\n');
-            }
-            else if(s.equals("front")){
-                if(lastIndex-startIndex==0) bw.write("-1");
-                else bw.write(String.valueOf(array[startIndex]));
-                bw.write('\n');
-            }
-            else if(s.equals("back")){
-                if(lastIndex-startIndex==0) bw.write("-1");
-                else bw.write(String.valueOf(array[lastIndex-1]));
-                bw.write('\n');
-            }
-
-
-
-
-
-
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        array = new int[n];
+        printArray = new int[m];
+        st = new StringTokenizer(br.readLine());
+        for (int i=0; i<n; i++){
+            array[i] = Integer.parseInt(st.nextToken());
         }
-        bw.close();
+        Arrays.sort(array);
+
+
+
+
+
+        backTracking(0,0);
+        System.out.println(sb);
+
+
+
 
 
 
 
     }
+    public static void backTracking(int depth, int startIndex){
+        if(depth==m){
+            for(int i=0; i<m; i++){
+                sb.append(printArray[i]).append(' ');
+            }
+            sb.append('\n');
+            return;
+        }
 
+        for(int i=startIndex; i<n; i++){
+            printArray[depth] = array[i];
+            backTracking(depth+1, i);
+        }
+
+
+
+
+
+    }
 }
